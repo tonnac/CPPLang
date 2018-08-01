@@ -1,0 +1,134 @@
+#include "Window.h"
+
+Window * g_pWindow = nullptr;
+HWND g_hWnd;
+
+LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wparam, LPARAM lparam)
+{
+	assert(g_pWindow != nullptr);
+	LRESULT ret;
+
+	if (ret = g_pWindow->MsgProc(hWnd, msg, wparam, lparam))
+	{
+		return ret;
+	}
+	return DefWindowProc(hWnd, msg, wparam, lparam);
+}
+
+LRESULT CALLBACK Window::MsgProc(HWND hWnd, UINT msg, WPARAM wparam, LPARAM lparam)
+{
+	switch (msg)
+	{
+	case WM_CREATE:
+		break;
+	case WM_DESTROY:
+		PostQuitMessage(0);
+		return 0;
+	case WM_MBUTTONDOWN:
+		DestroyWindow(hWnd);
+		return 0;
+	}
+	return 0;
+}
+
+
+bool Window::setWindow(HINSTANCE hinst, const TCHAR* pTitleName)
+{
+	this->m_hInst = hinst;
+	WNDCLASSEX wd;
+	ZeroMemory(&wd, sizeof(WNDCLASSEX));
+	wd.cbSize = sizeof(WNDCLASSEX);
+	wd.style = CS_HREDRAW | CS_VREDRAW;
+	wd.lpfnWndProc = WndProc;
+	wd.hInstance = m_hInst;
+	wd.hIcon = LoadIcon(nullptr, IDI_SHIELD);
+	wd.hCursor = LoadCursor(nullptr, IDC_IBEAM);
+	wd.hbrBackground = (HBRUSH)GetStockObject(BLACK_BRUSH);
+	wd.lpszClassName = L"Win";
+	wd.lpszMenuName = pTitleName;
+	wd.hIconSm = LoadIcon(nullptr, IDI_INFORMATION);
+
+	if (!RegisterClassEx(&wd))
+	{
+		return false;
+	}
+
+	m_hWnd = CreateWindowEx(WS_EX_APPWINDOW,
+		L"Win",
+		pTitleName,
+		m_dwStyle,
+		100,
+		100,
+		800,
+		600, 
+		nullptr, 
+		nullptr, 
+		hinst, 
+		nullptr);
+	
+
+	if (m_hWnd == nullptr)
+	{
+		return false;
+	}
+	g_hWnd = m_hWnd;
+
+	GetClientRect(m_hWnd, &m_rtClient);
+	GetWindowRect(m_hWnd, &m_rtWindow);
+	CenterWindow();
+	ShowWindow(m_hWnd, SW_SHOW);
+
+	return true;
+}
+
+bool Window::Run()
+{
+	if (!GameInit()) return false;
+	MSG msg;
+	ZeroMemory(&msg, sizeof(MSG));
+
+	while (true)
+	{
+		if (PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE))
+		{
+			TranslateMessage(&msg);
+			DispatchMessage(&msg);
+			if (msg.message == WM_QUIT)
+			{
+				break;
+			}
+		}
+		else
+		{
+			Sleep(10);
+			GameRun();
+		}
+	}
+	return GameRelease();
+}
+bool Window::GameInit()
+{
+	return true;
+}
+bool Window::GameRun()
+{
+	return true;
+}
+bool Window::GameRelease()
+{
+	return true;
+}
+void Window::CenterWindow()
+{
+	int iScreenWidth = GetSystemMetrics(SM_CXFULLSCREEN);
+	int iScreenHeight = GetSystemMetrics(SM_CYFULLSCREEN);
+	int x = ((iScreenWidth - (m_rtWindow.right - m_rtWindow.left)) / 2);
+	int y = ((iScreenHeight - (m_rtWindow.bottom - m_rtWindow.top)) / 2);
+	MoveWindow(m_hWnd, x, y, m_rtWindow.right - m_rtWindow.left, m_rtWindow.bottom - m_rtWindow.top, true);
+}
+
+Window::Window()
+{
+	g_pWindow = this;
+	m_dwStyle = WS_OVERLAPPEDWINDOW;
+}
