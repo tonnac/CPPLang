@@ -162,12 +162,20 @@ int main()
 
 	//Display_Node(recv_list); // 5-> 10-> 20-> 40-> 50->
 	
+	int ** ptr;
+	ptr = new int*[3];
+	for (int i = 0; i < 3; ++i)
+	{
+		ptr[i] = new int[3];
+	}
 
-	int * a = new int[3];
-	_msize(a);
-	a[0] = 1;
-	a[1] = 2;
-	a[2] = 3;
+	for (int i = 0; i < 3; ++i)
+	{
+		for (int j = 0; j < 3; ++j)
+		{
+			ptr[i][j] = 1;
+		}
+	}
 
 	return 0;
 }

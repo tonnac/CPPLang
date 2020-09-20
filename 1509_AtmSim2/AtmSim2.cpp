@@ -43,7 +43,7 @@ public:
 	{
 		strcpy_s(accNum, 50, acc);
 	}
-	void Deposit(int money) throw (AccountException)
+	void Deposit(int money) throw (...)
 	{
 		if (money < 0)
 		{
@@ -52,7 +52,7 @@ public:
 		}
 		balance += money;
 	}
-	void Withdraw(int money) throw (AccountException)
+	void Withdraw(int money) throw (...)
 	{
 		if (money > balance)
 		{
