@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27703.2026
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30503.244
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Note", "Note\Note.vcxproj", "{C5A1CA04-1277-4460-B174-E05E247B17B9}"
 EndProject
@@ -522,6 +522,8 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Window", "Window\Window.vcxproj", "{0679854D-C366-4C94-80A2-FFF7FE3B5EED}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Window_01", "Window_01\Window_01.vcxproj", "{6DC48A4F-72B0-4860-9C7C-3D3830EF3624}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Test", "Test\Test.vcxproj", "{3F16EF1D-09E8-4735-A7CE-0EDDE20D8CB6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -2195,6 +2197,14 @@ Global
 		{6DC48A4F-72B0-4860-9C7C-3D3830EF3624}.Release|x64.Build.0 = Release|x64
 		{6DC48A4F-72B0-4860-9C7C-3D3830EF3624}.Release|x86.ActiveCfg = Release|Win32
 		{6DC48A4F-72B0-4860-9C7C-3D3830EF3624}.Release|x86.Build.0 = Release|Win32
+		{3F16EF1D-09E8-4735-A7CE-0EDDE20D8CB6}.Debug|x64.ActiveCfg = Debug|x64
+		{3F16EF1D-09E8-4735-A7CE-0EDDE20D8CB6}.Debug|x64.Build.0 = Debug|x64
+		{3F16EF1D-09E8-4735-A7CE-0EDDE20D8CB6}.Debug|x86.ActiveCfg = Debug|Win32
+		{3F16EF1D-09E8-4735-A7CE-0EDDE20D8CB6}.Debug|x86.Build.0 = Debug|Win32
+		{3F16EF1D-09E8-4735-A7CE-0EDDE20D8CB6}.Release|x64.ActiveCfg = Release|x64
+		{3F16EF1D-09E8-4735-A7CE-0EDDE20D8CB6}.Release|x64.Build.0 = Release|x64
+		{3F16EF1D-09E8-4735-A7CE-0EDDE20D8CB6}.Release|x86.ActiveCfg = Release|Win32
+		{3F16EF1D-09E8-4735-A7CE-0EDDE20D8CB6}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -2455,6 +2465,7 @@ Global
 		{E5B1A356-FCFD-443F-A566-C46B5E9AED2D} = {C0FA2531-B75F-40AA-A7FC-6527BA80C738}
 		{0679854D-C366-4C94-80A2-FFF7FE3B5EED} = {C0FA2531-B75F-40AA-A7FC-6527BA80C738}
 		{6DC48A4F-72B0-4860-9C7C-3D3830EF3624} = {C0FA2531-B75F-40AA-A7FC-6527BA80C738}
+		{3F16EF1D-09E8-4735-A7CE-0EDDE20D8CB6} = {C0FA2531-B75F-40AA-A7FC-6527BA80C738}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6B3EB765-81FB-4842-AFCE-EB4C90E97A4E}
